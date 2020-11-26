@@ -2,70 +2,20 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    match /{document=**} {
-      allow read: if false;
-      allow write: if false;
-    }
-
     match /categories/{doc} {
       allow read: if true;
     }
 
-    // functions
-    function isNull(property) {
-      return request.resource.data[property] == null;
+    match /products/{doc} {
+      allow read: if true;
     }
 
-    function changed(property) {
-      return request.resource.data[property] != resource.data[property];
+    match /carts/{doc} {
+      allow read: if isCurrentUser(resource.data.uid);
     }
 
-    function isList(property) {
-      return request.resource.data[property] is list;
-    }
-
-    function isString(property) {
-      return request.resource.data[property] is string;
-    }
-
-    function isNumber(property) {
-      return request.resource.data[property] is number;
-    }
-
-    function isBoolean(property) {
-      return request.resource.data[property] is bool;
-    }
-
-    function isMap(property) {
-      return request.resource.data[property] is map;
-    }
-
-    function isTimestamp(property) {
-      return request.resource.data[property] is timestamp;
-    }
-
-    function minSize(property, value) {
-      return request.resource.data[property].size() >= value;
-    }
-
-    function maxSize(property, value) {
-      return request.resource.data[property].size() <= value;
-    }
-
-    function maxlength(property, value) {
-      return request.resource.data[property].size() <= value;
-    }
-
-    function minlength(property, value) {
-      return request.resource.data[property].size() >= value;
-    }
-
-    function max(property, value) {
-      return request.resource.data[property] <= value;
-    }
-
-    function min(property, value) {
-      return request.resource.data[property] >= value;
+    match /orders/{doc} {
+      allow read: if isCurrentUser(resource.data.uid);
     }
 
     function isCurrentUser(userId) {

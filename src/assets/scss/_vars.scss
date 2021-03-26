@@ -1,0 +1,107 @@
+@import "~bootstrap/scss/functions";
+
+$enable-responsive-font-sizes: true;
+
+
+$white:    #fff;
+$gray-100: #f3f7f9;
+$gray-200: #e4eaec;
+$gray-300: #ccd5db;
+$gray-400: #a3afb7;
+$gray-500: #76838f;
+$gray-600: #526069;
+$gray-700: #37474f;
+$gray-800: #263238;
+$gray-900: #163238;
+$gray-900: darken($gray-800, 3%);
+$black:    #000;
+
+$blue:      #0b69e3;
+$indigo:    #364ff5;
+$purple:    #7231f5;
+$pink:      #e6155e;
+$red:       #e62020;
+$orange:    #b53f00;
+$yellow:    #faa700;
+$green:     #008c4d;
+$teal:      #008577;
+$cyan:      #007d96;
+
+$primary:   $indigo;
+$success:   $green;
+$warning:   $yellow;
+$danger:    $red;
+
+$custom-theme-colors: (
+  "primary": $primary,
+  "success": $success,
+  "warning": $warning,
+  "danger": $danger,
+);
+
+
+$yiq-text-dark:             $gray-800;
+$yiq-text-light:            $white;
+$body-bg:                   $gray-100;
+$body-color:                $gray-700;
+
+
+$link-color:                $primary;
+$link-decoration:           none;
+$link-hover-color:          darken($link-color, 15%);
+$link-hover-decoration:     none;
+
+
+$border-width:                1px;
+$border-color:                $gray-300;
+
+$border-radius:               0rem;
+$border-radius-lg:            0rem;
+$border-radius-sm:            0rem;
+
+
+$box-shadow-sm:               0 0.1563rem 0.3125rem rgba($gray-900, .15);
+$box-shadow:                  0 0.3125rem 0.625rem rgba($gray-900, .15);
+$box-shadow-lg:               0 0.625rem 1.25rem rgba($gray-900, .15);
+
+
+$transition-base:             all .2s ease-in-out;
+$transition-fade:             opacity .15s linear;
+$transition-collapse:         height .35s ease;
+
+
+$line-height-lg:              1.5;
+$line-height-sm:              1.5;
+
+$font-family-sans-serif:      Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-family-base:            $font-family-sans-serif;
+
+$font-size-base:              1rem;
+$font-size-lg:                0.875rem;
+$font-size-sm:                0.75rem;
+
+$font-weight-light:           300;
+$font-weight-normal:          400;
+$font-weight-bold:            500;
+$font-weight-base:            300;
+
+$headings-margin-bottom: calc(1em / 2);
+
+// $spacer: 0.875rem;
+// $spacers: (
+//   0: 0,
+//   1: ($spacer * .25),
+//   2: ($spacer * .5),
+//   3: $spacer,
+//   4: ($spacer * 2),
+//   5: ($spacer * 3)
+// );
+
+$grid-columns:                12;
+// $grid-gutter-width:           14px;
+$grid-row-columns:            6;
+
+
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";

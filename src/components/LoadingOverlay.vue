@@ -1,9 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap');
+<template>
+  <div class="loading-overlay">
+    <div class="brand-rotate animate__animated animate__bounce animate__infinite">
+      <BrandIcon fill="#364ff5" width="60" />
+    </div>
+  </div>
+</template>
 
-@import "~animate.css";
-@import "vars";
-@import "bootstrap";
-
+<style lang="scss">
 .loading-overlay {
   position: fixed;
   display: flex;
@@ -17,3 +20,4 @@
   justify-content: center;
   align-items: center;
 }
+</style>

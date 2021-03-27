@@ -4,6 +4,11 @@
 @import "vars";
 @import "bootstrap";
 
+body {
+  padding-top: 3.6875rem;
+  min-height: 100vh;
+}
+
 .loading-overlay {
   position: fixed;
   display: flex;
@@ -16,4 +21,47 @@
   background-color: $white;
   justify-content: center;
   align-items: center;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.avatar-form {
+  display: block;
+  position: relative;
+  width: 8rem;
+  height: 8rem;
+  border: 0.1875rem solid $primary;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 100%;
+  img {
+    border-radius: 100%;
+    border: 0.1875rem solid $white;
+    display: block;
+    width: 100%;
+  }
+
+  .btn {
+    position: absolute;
+    left: 50%;
+    bottom: 0.25rem;
+    border-radius: 100%;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    transform: translateX(-50%);
+    opacity: 0.5;
+  }
+
+  &:hover {
+    .btn {
+      opacity: 1;
+    }
+  }
 }

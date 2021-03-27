@@ -1,7 +1,7 @@
 import ApiService from '@/common/api.service'
 import jwtService from '@/common/jwt.service'
-import { REGISTER, LOGIN, LOGOUT, CHECK_AUTH } from '../action.types'
-import { SET_AUTH } from '../mutation.types'
+import { REGISTER, LOGIN, LOGOUT, CHECK_AUTH, UPDATE_PROFILE, UPDATE_AVATAR } from '../action.types'
+import { SET_AUTH, UPDATE_USER } from '../mutation.types'
 
 const state = () => ({
   user: null,
@@ -40,16 +40,30 @@ const actions = {
         commit(SET_AUTH, { user: null, token: null })
       })
   },
+  [UPDATE_PROFILE]({ commit }, payload) {
+    return ApiService.updateProfile(payload).then(({ user }) => {
+      commit(UPDATE_USER, user)
+    })
+  },
+  [UPDATE_AVATAR]({ commit }, payload) {
+    return ApiService.updateAvatar(payload).then(({ user }) => {
+      commit(UPDATE_USER, user)
+    })
+  },
 }
 
 const mutations = {
-  [SET_AUTH](state, { user, token }) {
+  [SET_AUTH](state, { user, token, favorites }) {
     state.user = user
+    state.favorites = favorites
     if (token) {
       jwtService.saveToken(token)
     } else {
       jwtService.destroyToken()
     }
+  },
+  [UPDATE_USER](state, user) {
+    state.user = user
   },
 }
 

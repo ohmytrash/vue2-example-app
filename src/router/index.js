@@ -4,9 +4,10 @@ import VueRouter from 'vue-router'
 import MainLayout from '@/layouts/MainLayout'
 import AuthLayout from '@/layouts/AuthLayout'
 
-import HomePage from '@/views/Home'
 import LoginPage from '@/views/Login'
 import RegisterPage from '@/views/Register'
+import HomePage from '@/views/Home'
+import SettingPage from '@/views/Setting'
 
 Vue.use(VueRouter)
 
@@ -19,6 +20,14 @@ const routes = [
         path: '',
         name: 'Home',
         component: HomePage,
+        meta: {
+          middleware: ['AuthMiddleware'],
+        },
+      },
+      {
+        path: 'setting',
+        name: 'Setting',
+        component: SettingPage,
         meta: {
           middleware: ['AuthMiddleware'],
         },

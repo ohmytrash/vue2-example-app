@@ -50,6 +50,28 @@ const ApiService = {
       }
     })
   },
+  updateProfile(data) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        ApiService.setHeader()
+        const res = await Vue.axios.put('/profile', data)
+        resolve(res.data)
+      } catch (e) {
+        reject(catchError(e))
+      }
+    })
+  },
+  updateAvatar(data) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        ApiService.setHeader()
+        const res = await Vue.axios.put('/profile/avatar', data)
+        resolve(res.data)
+      } catch (e) {
+        reject(catchError(e))
+      }
+    })
+  },
 }
 
 export default ApiService

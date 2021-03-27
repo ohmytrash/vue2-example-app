@@ -1,10 +1,10 @@
 import Brand from '@/assets/icons/brand.svg'
-import Home from 'feather-icons/dist/icons/home.svg'
+import Image from 'feather-icons/dist/icons/image.svg'
 
 const icons = {
   install(Vue) {
     Vue.component('BrandIcon', Brand)
-    Vue.component('HomeIcon', Home)
+    Vue.component('ImageIcon', Image)
   },
 }
 

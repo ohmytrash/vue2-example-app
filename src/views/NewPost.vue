@@ -23,7 +23,7 @@
               <markdown-editor v-model="form.body" />
             </div>
             <div class="form-group">
-              <button type="submit" class="btn btn-primary btn-block">CREATE</button>
+              <button type="submit" class="btn btn-primary btn-block" :disabled="loading">CREATE</button>
             </div>
           </form>
         </div>
@@ -53,7 +53,7 @@ export default {
       this.error = ''
       try {
         const post = await ApiService.createPost(form)
-        console.log(post)
+        this.$router.push({ name: 'ReadPost', params: { slug: post.slug } })
       } catch (e) {
         this.error = e
         this.loading = false

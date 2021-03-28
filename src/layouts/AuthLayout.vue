@@ -7,7 +7,9 @@
       <div class="col-lg-5 col-md-8 mx-auto">
         <div class="card card-body border-0">
           <h2 class="text-center mb-3">{{ $route.name.toUpperCase() }}</h2>
-          <router-view />
+          <fade-transition>
+            <router-view />
+          </fade-transition>
         </div>
       </div>
     </div>

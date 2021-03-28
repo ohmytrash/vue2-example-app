@@ -1,7 +1,9 @@
 <template>
   <div>
-    <p v-if="loading">LOADING</p>
-    <div v-else>
+    <FadeTransition>
+      <loading class="h-80" v-if="!post" />
+    </FadeTransition>
+    <div v-if="post">
       <div class="jumbotron jumbotron-fluid bg-dark">
         <div class="container text-light">
           <h1 class="mb-2">{{ post.title }}</h1>
@@ -39,14 +41,17 @@
 <script>
 import marked from 'marked'
 import ApiService from '@/common/api.service'
+import Loading from '@/components/Loading'
 import Avatar from '@/assets/image/avatar.png'
 export default {
   data() {
     return {
       Avatar,
-      loading: true,
-      post: {},
+      post: null,
     }
+  },
+  components: {
+    Loading,
   },
   computed: {
     body() {

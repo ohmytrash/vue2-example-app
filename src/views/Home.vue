@@ -2,9 +2,7 @@
   <div class="container py-3">
     <div class="row justify-content-center flex-wrap-reverse">
       <div class="col-lg-6 col-md-8">
-        <div>
-          <post-lists :posts="posts" />
-        </div>
+        <post-list v-for="post in posts" :key="post.id" :post="post" />
         <div>
           <infinite-loading @infinite="infiniteHandler" />
         </div>
@@ -19,11 +17,11 @@
 </template>
 
 <script>
-import PostLists from '@/components/PostLists'
+import PostList from '@/components/PostList'
 import { mapState } from 'vuex'
 import { FETCH_POST } from '@/store/action.types'
 export default {
-  components: { PostLists },
+  components: { PostList },
   computed: {
     ...mapState({
       posts: (state) => state.post.posts,

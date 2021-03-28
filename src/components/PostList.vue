@@ -16,9 +16,10 @@
         </div>
       </div>
     </div>
-    <div class="card-body">
-      <a href="#" class="text-capitalize small">{{ category.title }}</a>
-      <p>{{ post.description }}</p>
+    <div class="card-body py-2">
+      <h5 class="m-0">{{ post.title }}</h5>
+      Category : <a href="#" class="text-capitalize">{{ category.title }}</a>
+      <p class="mb-2">{{ post.description }}</p>
       <router-link :to="{ name: 'ReadPost', params: { slug: post.slug } }" class="btn-link">Read more</router-link>
     </div>
   </div>

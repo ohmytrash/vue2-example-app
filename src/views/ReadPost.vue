@@ -7,6 +7,9 @@
       <div class="jumbotron jumbotron-fluid bg-dark">
         <div class="container text-light">
           <h1 class="mb-2">{{ post.title }}</h1>
+          <p class="lead font-weight-bold">
+            Category : <a href="#">{{ post.category.title }}</a>
+          </p>
           <div class="d-flex align-items-center">
             <div class="mr-2" :style="{ width: '2.5rem', height: '2.5rem' }">
               <v-lazy-image
@@ -23,7 +26,7 @@
           </div>
           <div v-if="post.user.id === $store.getters.user.id" class="pt-3">
             <router-link :to="{ name: 'EditPost', params: { slug: post.slug } }" class="btn btn-info btn-sm mr-2">EDIT</router-link>
-            <a href="#" class="btn btn-danger btn-sm">DELETE</a>
+            <button @click="handleDelete(post.id)" class="btn btn-danger btn-sm" :disabled="loading">DELETE</button>
           </div>
         </div>
       </div>
@@ -48,6 +51,7 @@ export default {
     return {
       Avatar,
       post: null,
+      loading: false,
     }
   },
   components: {
@@ -69,6 +73,16 @@ export default {
         return this.$router.push('/404')
       }
       this.loading = false
+    },
+    async handleDelete(id) {
+      this.loading = true
+      try {
+        await ApiService.deletePost(id)
+        this.$router.push({ name: 'Home' })
+      } catch (e) {
+        this.$toast.error(e)
+        this.loading = true
+      }
     },
   },
   mounted() {

@@ -1,5 +1,5 @@
 import ApiService from '@/common/api.service'
-import { CREATE_POST, FETCH_POST } from '../action.types'
+import { FETCH_POST } from '../action.types'
 import { ADD_POST } from '../mutation.types'
 
 const state = () => ({
@@ -16,11 +16,6 @@ const getters = {
 }
 
 const actions = {
-  [CREATE_POST](contex, payload) {
-    return ApiService.createPost(payload).then((post) => {
-      return post
-    })
-  },
   [FETCH_POST]({ commit, state }) {
     return ApiService.fetchPost({ skip: state.posts.length, limit: state.posts.length ? 5 : 10 })
       .then((data) => {

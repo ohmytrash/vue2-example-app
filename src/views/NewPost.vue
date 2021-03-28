@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { CREATE_POST } from '@/store/action.types'
+import ApiService from '@/common/api.service'
 export default {
   data() {
     return {
@@ -52,7 +52,7 @@ export default {
       this.loading = true
       this.error = ''
       try {
-        const post = await this.$store.dispatch(CREATE_POST, form)
+        const post = await ApiService.createPost(form)
         console.log(post)
       } catch (e) {
         this.error = e

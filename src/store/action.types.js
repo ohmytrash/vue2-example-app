@@ -6,6 +6,3 @@ export const UPDATE_AVATAR = '[AUTH] UPDATE_AVATAR'
 export const CHECK_AUTH = '[AUTH] CHECK_AUTH'
 
 export const FETCH_POST = '[POST] FETCH_POST'
-export const CREATE_POST = '[POST] CREATE_POST'
-export const UPDATE_POST = '[POST] UPDATE_POST'
-export const DELETE_POST = '[POST] DELETE_POST'

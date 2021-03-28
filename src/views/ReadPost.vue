@@ -5,7 +5,6 @@
       <div class="jumbotron jumbotron-fluid bg-dark">
         <div class="container text-light">
           <h1 class="mb-2">{{ post.title }}</h1>
-
           <div class="d-flex align-items-center">
             <div class="mr-2" :style="{ width: '2.5rem', height: '2.5rem' }">
               <v-lazy-image
@@ -21,7 +20,7 @@
             </div>
           </div>
           <div v-if="post.user.id === $store.getters.user.id" class="pt-3">
-            <a href="#" class="btn btn-info btn-sm mr-2">EDIT</a>
+            <router-link :to="{ name: 'EditPost', params: { slug: post.slug } }" class="btn btn-info btn-sm mr-2">EDIT</router-link>
             <a href="#" class="btn btn-danger btn-sm">DELETE</a>
           </div>
         </div>

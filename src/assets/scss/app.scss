@@ -29,7 +29,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 999;
+  z-index: 9999;
 }
 
 .avatar-form {
@@ -65,4 +65,12 @@ body {
       opacity: 1;
     }
   }
+}
+
+.h-80 {
+  min-height: calc(100vh - 6rem);
+}
+
+.h-50 {
+  min-height: calc(100vh - 15rem);
 }

@@ -6,6 +6,7 @@ import Editor from 'v-markdown-editor'
 import VueMoment from 'vue-moment'
 import InfiniteLoading from 'vue-infinite-loading'
 import Sticky from 'vue-sticky-directive'
+import { FadeTransition } from 'vue2-transitions'
 
 import NoMore from '@/components/infiniteLoading/NoMore'
 import Spinner from '@/components/infiniteLoading/Spinner'
@@ -31,6 +32,7 @@ const Plugins = {
       },
     })
     Vue.use(Sticky)
+    Vue.component('FadeTransition', FadeTransition)
   },
 }
 

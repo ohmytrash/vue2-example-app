@@ -8,12 +8,10 @@
 </template>
 
 <script>
-import { FadeTransition } from 'vue2-transitions'
 import LoadingOverlay from '@/components/LoadingOverlay'
 export default {
   components: {
     LoadingOverlay,
-    FadeTransition,
   },
 }
 </script>

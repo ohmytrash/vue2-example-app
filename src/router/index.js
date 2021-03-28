@@ -11,6 +11,7 @@ import HomePage from '@/views/Home'
 import SettingPage from '@/views/Setting'
 import NewPostPage from '@/views/NewPost'
 import ReadPostPage from '@/views/ReadPost'
+import EditPostPage from '@/views/EditPost'
 
 Vue.use(VueRouter)
 
@@ -47,6 +48,14 @@ const routes = [
         path: 'read/:slug',
         name: 'ReadPost',
         component: ReadPostPage,
+        meta: {
+          middleware: ['AuthMiddleware'],
+        },
+      },
+      {
+        path: 'edit/:slug',
+        name: 'EditPost',
+        component: EditPostPage,
         meta: {
           middleware: ['AuthMiddleware'],
         },

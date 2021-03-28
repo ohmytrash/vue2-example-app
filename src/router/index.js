@@ -8,6 +8,7 @@ import LoginPage from '@/views/Login'
 import RegisterPage from '@/views/Register'
 import HomePage from '@/views/Home'
 import SettingPage from '@/views/Setting'
+import NewPostPage from '@/views/NewPost'
 
 Vue.use(VueRouter)
 
@@ -28,6 +29,14 @@ const routes = [
         path: 'setting',
         name: 'Setting',
         component: SettingPage,
+        meta: {
+          middleware: ['AuthMiddleware'],
+        },
+      },
+      {
+        path: 'new-post',
+        name: 'NewPost',
+        component: NewPostPage,
         meta: {
           middleware: ['AuthMiddleware'],
         },

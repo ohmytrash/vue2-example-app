@@ -1,7 +1,7 @@
 <template>
   <div class="loading-overlay">
-    <div class="brand-rotate animate__animated animate__bounce animate__infinite">
-      <BrandIcon color="text-primary" width="60" />
+    <div class="brand-rotate animate__animated animate__bounce animate__infinite text-primary">
+      <BrandIcon width="60" />
     </div>
   </div>
 </template>

@@ -8,7 +8,7 @@
       :alt="$store.getters.user.username"
     ></v-lazy-image>
     <button class="btn btn-light btn-sm" :disabled="loading" @click="handleClick">
-      <ImageIcon width="1.5rem" />
+      <i class="fas far fa-image"></i>
     </button>
     <input ref="input" type="file" class="d-none" @change="handleChange" />
   </div>

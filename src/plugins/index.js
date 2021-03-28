@@ -5,6 +5,7 @@ import VueToast from 'vue-toast-notification'
 import Editor from 'v-markdown-editor'
 import VueMoment from 'vue-moment'
 import InfiniteLoading from 'vue-infinite-loading'
+import Sticky from 'vue-sticky-directive'
 
 import NoMore from '@/components/infiniteLoading/NoMore'
 import Spinner from '@/components/infiniteLoading/Spinner'
@@ -29,6 +30,7 @@ const Plugins = {
         error: OnError,
       },
     })
+    Vue.use(Sticky)
   },
 }
 

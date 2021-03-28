@@ -1,15 +1,19 @@
 <template>
-  <div class="row justify-content-center">
-    <div class="col-lg-6 col-md-8">
-      <div>
-        <post-lists :posts="posts" />
+  <div class="container py-3">
+    <div class="row justify-content-center flex-wrap-reverse">
+      <div class="col-lg-6 col-md-8">
+        <div>
+          <post-lists :posts="posts" />
+        </div>
+        <div>
+          <infinite-loading @infinite="infiniteHandler" />
+        </div>
       </div>
-      <div>
-        <infinite-loading @infinite="infiniteHandler" />
+      <div class="col-md-4" sticky-container>
+        <div v-sticky sticky-offset="{ top: 64 }">
+          <div class="card card-body mb-3"></div>
+        </div>
       </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card card-body"></div>
     </div>
   </div>
 </template>

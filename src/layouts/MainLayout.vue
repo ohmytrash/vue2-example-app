@@ -22,9 +22,7 @@
         </div>
       </div>
     </header>
-    <div class="container py-3">
-      <router-view />
-    </div>
+    <router-view />
   </div>
 </template>
 

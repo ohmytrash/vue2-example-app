@@ -19,7 +19,7 @@
     <div class="card-body">
       <a href="#" class="text-capitalize small">{{ category.title }}</a>
       <p>{{ post.description }}</p>
-      <a href="#" class="btn-link">Read more</a>
+      <router-link :to="{ name: 'ReadPost', params: { slug: post.slug } }" class="btn-link">Read more</router-link>
     </div>
   </div>
 </template>

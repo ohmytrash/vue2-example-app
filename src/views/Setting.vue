@@ -1,38 +1,40 @@
 <template>
-  <div class="row">
-    <div class="col-lg-6 col-md-10 mx-auto">
-      <h2 class="text-center">PROFILE SETTING</h2>
-      <div class="card card-body">
-        <form-update-avatar class="mb-3" />
-        <div class="alert alert-danger text-center" v-if="error">{{ error }}</div>
-        <form @submit.prevent="updateProfile(form)">
-          <div class="form-group">
-            <label for="name">Your name</label>
-            <input type="text" class="form-control" id="name" name="name" v-model="form.name" />
-          </div>
-          <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" name="username" v-model="form.username" />
-          </div>
-          <div class="form-group">
-            <label for="bio">Bio</label>
-            <textarea class="form-control" id="bio" name="bio" v-model="form.bio" rows="3"></textarea>
-          </div>
+  <div class="container py-3">
+    <div class="row">
+      <div class="col-lg-6 col-md-10 mx-auto">
+        <h2 class="text-center">PROFILE SETTING</h2>
+        <div class="card card-body">
+          <form-update-avatar class="mb-3" />
+          <div class="alert alert-danger text-center" v-if="error">{{ error }}</div>
+          <form @submit.prevent="updateProfile(form)">
+            <div class="form-group">
+              <label for="name">Your name</label>
+              <input type="text" class="form-control" id="name" name="name" v-model="form.name" />
+            </div>
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" class="form-control" id="username" name="username" v-model="form.username" />
+            </div>
+            <div class="form-group">
+              <label for="bio">Bio</label>
+              <textarea class="form-control" id="bio" name="bio" v-model="form.bio" rows="3"></textarea>
+            </div>
 
-          <div class="form-group">
-            <label for="naw-password">New password</label>
-            <input type="password" class="form-control" id="naw-password" name="naw-password" v-model="form.new_password" />
-            <small class="form-text text-muted">Leave blank if you don't want to update</small>
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password" v-model="form.password" />
-            <small class="form-text text-muted">Required if there is a new password</small>
-          </div>
-          <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block" :disabled="loading">UPDATE</button>
-          </div>
-        </form>
+            <div class="form-group">
+              <label for="naw-password">New password</label>
+              <input type="password" class="form-control" id="naw-password" name="naw-password" v-model="form.new_password" />
+              <small class="form-text text-muted">Leave blank if you don't want to update</small>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password" name="password" v-model="form.password" />
+              <small class="form-text text-muted">Required if there is a new password</small>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block" :disabled="loading">UPDATE</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>

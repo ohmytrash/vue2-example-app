@@ -116,6 +116,16 @@ const ApiService = {
       }
     })
   },
+  readPost(slug) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const res = await Vue.axios.get(`/posts/${slug}`)
+        resolve(res.data)
+      } catch (e) {
+        reject(catchError(e))
+      }
+    })
+  },
 }
 
 export default ApiService

@@ -4,11 +4,13 @@ import VueRouter from 'vue-router'
 import MainLayout from '@/layouts/MainLayout'
 import AuthLayout from '@/layouts/AuthLayout'
 
+import NotFoundPage from '@/views/NotFound'
 import LoginPage from '@/views/Login'
 import RegisterPage from '@/views/Register'
 import HomePage from '@/views/Home'
 import SettingPage from '@/views/Setting'
 import NewPostPage from '@/views/NewPost'
+import ReadPostPage from '@/views/ReadPost'
 
 Vue.use(VueRouter)
 
@@ -41,6 +43,14 @@ const routes = [
           middleware: ['AuthMiddleware'],
         },
       },
+      {
+        path: 'read/:slug',
+        name: 'ReadPost',
+        component: ReadPostPage,
+        meta: {
+          middleware: ['AuthMiddleware'],
+        },
+      },
     ],
   },
   {
@@ -62,6 +72,17 @@ const routes = [
         meta: {
           middleware: ['GuestMiddleware'],
         },
+      },
+    ],
+  },
+  {
+    path: '*',
+    component: MainLayout,
+    children: [
+      {
+        path: '*',
+        name: '404',
+        component: NotFoundPage,
       },
     ],
   },

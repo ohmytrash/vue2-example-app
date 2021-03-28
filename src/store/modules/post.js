@@ -48,7 +48,6 @@ const mutations = {
         createdAt: post.createdAt,
         category: post.category.id,
         user: post.user.id,
-        favoriteCount: post.favoriteCount,
       })
     })
     state.posts = posts

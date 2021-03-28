@@ -12,7 +12,7 @@
           </div>
         </div>
         <div class="right">
-          <button class="btn btn-sm btn-danger">Add to favorite</button>
+          <favorite-toggle :post-id="post.id" class="btn-sm" />
         </div>
       </div>
     </div>
@@ -27,7 +27,9 @@
 
 <script>
 import Avatar from '@/assets/image/avatar.png'
+import FavoriteToggle from './FavoriteToggle'
 export default {
+  components: { FavoriteToggle },
   props: {
     post: {
       type: Object,

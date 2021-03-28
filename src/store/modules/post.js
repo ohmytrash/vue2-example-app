@@ -37,6 +37,7 @@ const mutations = {
       categories[post.category.id] = post.category
       users[post.user.id] = post.user
       posts.push({
+        id: post.id,
         title: post.title,
         slug: post.slug,
         description: post.description,

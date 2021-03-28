@@ -1,7 +1,7 @@
 import ApiService from '@/common/api.service'
 import jwtService from '@/common/jwt.service'
-import { REGISTER, LOGIN, LOGOUT, CHECK_AUTH, UPDATE_PROFILE, UPDATE_AVATAR } from '../action.types'
-import { SET_AUTH, UPDATE_USER } from '../mutation.types'
+import { REGISTER, LOGIN, LOGOUT, CHECK_AUTH, UPDATE_PROFILE, UPDATE_AVATAR, FAVORITE_TOGGLE } from '../action.types'
+import { SET_AUTH, UPDATE_USER, ADD_FAVORITE, REMOVE_FAVORITE } from '../mutation.types'
 
 const state = () => ({
   user: null,
@@ -14,6 +14,9 @@ const getters = {
   },
   user(state) {
     return state.user
+  },
+  favorites(state) {
+    return state.favorites
   },
 }
 
@@ -50,6 +53,15 @@ const actions = {
       commit(UPDATE_USER, user)
     })
   },
+  [FAVORITE_TOGGLE]({ commit }, id) {
+    return ApiService.favoriteToggle(id).then((favorite) => {
+      if (favorite) {
+        commit(ADD_FAVORITE, favorite)
+      } else {
+        commit(REMOVE_FAVORITE, id)
+      }
+    })
+  },
 }
 
 const mutations = {
@@ -64,6 +76,13 @@ const mutations = {
   },
   [UPDATE_USER](state, user) {
     state.user = user
+  },
+  [ADD_FAVORITE](state, data) {
+    state.favorites = [...state.favorites, data]
+  },
+  [REMOVE_FAVORITE](state, id) {
+    const favorites = [...state.favorites]
+    state.favorites = favorites.filter((item) => item.post !== id)
   },
 }
 

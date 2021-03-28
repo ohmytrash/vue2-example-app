@@ -126,6 +126,17 @@ const ApiService = {
       }
     })
   },
+  favoriteToggle(id) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        ApiService.setHeader()
+        const res = await Vue.axios.post('/posts/' + id + '/favorite-toggle')
+        resolve(res.data)
+      } catch (e) {
+        reject(catchError(e))
+      }
+    })
+  },
 }
 
 export default ApiService

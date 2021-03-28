@@ -24,9 +24,22 @@
               <span class="time small">{{ post.createdAt | moment('ddd, MMM D YYYY') }}</span>
             </div>
           </div>
-          <div v-if="post.user.id === $store.getters.user.id" class="pt-3">
-            <router-link :to="{ name: 'EditPost', params: { slug: post.slug } }" class="btn btn-info btn-sm mr-2">EDIT</router-link>
-            <button @click="handleDelete(post.id)" class="btn btn-danger btn-sm" :disabled="loading">DELETE</button>
+          <div class="pt-3">
+            <router-link
+              v-if="post.user.id === $store.getters.user.id"
+              :to="{ name: 'EditPost', params: { slug: post.slug } }"
+              class="btn btn-info btn-sm mr-2"
+              >EDIT</router-link
+            >
+            <button
+              v-if="post.user.id === $store.getters.user.id"
+              @click="handleDelete(post.id)"
+              class="btn btn-danger btn-sm mr-2"
+              :disabled="loading"
+            >
+              DELETE
+            </button>
+            <favorite-toggle :post-id="post.id" class="btn-sm" />
           </div>
         </div>
       </div>
@@ -46,6 +59,7 @@ import marked from 'marked'
 import ApiService from '@/common/api.service'
 import Loading from '@/components/Loading'
 import Avatar from '@/assets/image/avatar.png'
+import FavoriteToggle from '@/components/FavoriteToggle'
 export default {
   data() {
     return {
@@ -56,6 +70,7 @@ export default {
   },
   components: {
     Loading,
+    FavoriteToggle,
   },
   computed: {
     body() {

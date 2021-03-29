@@ -9,6 +9,7 @@
   </div>
 </template>
 <script>
+import io from 'socket.io-client'
 import ApiService from '@/common/api.service'
 import CommentForm from './CommentForm'
 import Spinner from '../infiniteLoading/Spinner'
@@ -24,6 +25,7 @@ export default {
     return {
       comments: [],
       loading: true,
+      socket: null,
     }
   },
   components: {
@@ -40,9 +42,27 @@ export default {
       }
       this.loading = false
     },
+    onNewComment(comment) {
+      if (this.postId === comment.post) {
+        this.comments = [comment, ...this.comments]
+      }
+    },
+    onDeleteComment(commentId) {
+      const newdata = [...this.comments]
+      this.comments = newdata.filter((val) => val.id !== commentId)
+    },
   },
   mounted() {
     this.loadComments()
+    if (!this.socket) {
+      this.socket = io('http://localhost:3000/comments')
+      this.socket.on('NEW_COMMENT', this.onNewComment)
+      this.socket.on('DELETE_COMMENT', this.onDeleteComment)
+    }
+  },
+  beforeDestroy() {
+    this.socket.off('NEW_COMMENT')
+    this.socket.off('DELETE_COMMENT')
   },
 }
 </script>

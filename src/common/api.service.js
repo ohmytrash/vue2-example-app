@@ -171,6 +171,29 @@ const ApiService = {
       }
     })
   },
+
+  postComment(postId, data) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        ApiService.setHeader()
+        const res = await Vue.axios.post('/comments/' + postId, data)
+        resolve(res.data)
+      } catch (e) {
+        reject(catchError(e))
+      }
+    })
+  },
+  fetchComments(postId) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        ApiService.setHeader()
+        const res = await Vue.axios.get('/comments/' + postId)
+        resolve(res.data)
+      } catch (e) {
+        reject(catchError(e))
+      }
+    })
+  },
 }
 
 export default ApiService

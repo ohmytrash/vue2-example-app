@@ -47,6 +47,7 @@
         <div class="row justify-content-center">
           <div class="col-lg-10">
             <div class="card card-body mb-3" v-html="body"></div>
+            <comment :post-id="post.id" />
           </div>
         </div>
       </div>
@@ -60,6 +61,7 @@ import ApiService from '@/common/api.service'
 import Loading from '@/components/Loading'
 import Avatar from '@/assets/image/avatar.png'
 import FavoriteToggle from '@/components/FavoriteToggle'
+import Comment from '@/components/comment'
 export default {
   data() {
     return {
@@ -71,6 +73,7 @@ export default {
   components: {
     Loading,
     FavoriteToggle,
+    Comment,
   },
   computed: {
     body() {

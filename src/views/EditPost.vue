@@ -78,7 +78,6 @@ export default {
       this.error = ''
       try {
         const post = await ApiService.updatePost(this.post.id, form)
-        console.log(post)
         if (this.post.slug !== post.slug) {
           this.$router.push({ name: 'EditPost', params: { slug: post.slug } })
         }

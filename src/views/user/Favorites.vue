@@ -9,6 +9,7 @@
 <script>
 import PostList from '@/components/PostList'
 import ApiService from '@/common/api.service'
+import socket from '@/common/socket'
 export default {
   components: {
     PostList,
@@ -17,6 +18,7 @@ export default {
     return {
       favorites: [],
       total: 0,
+      socket: null,
     }
   },
   methods: {
@@ -34,6 +36,35 @@ export default {
           $state.error()
         })
     },
+    onPostUpdate(post) {
+      const favorites = []
+      this.favorites.forEach((item) => {
+        if (post.id === item.post.id) {
+          item.post = post
+        }
+        favorites.push(item)
+      })
+      this.favorites = favorites
+    },
+    onPostDelete(id) {
+      const favorites = [...this.favorites]
+      this.favorites = favorites.filter(({ post }) => post.id !== id)
+      this.total = this.total - 1
+    },
+  },
+  mounted() {
+    if (!this.socket) {
+      this.socket = socket
+      socket.on('UPDATE_POST', this.onPostUpdate)
+      socket.on('DELETE_POST', this.onPostDelete)
+    }
+  },
+  beforeDestroy() {
+    if (this.socket) {
+      this.socket = null
+      socket.off('UPDATE_POST', this.onPostUpdate)
+      socket.off('DELETE_POST', this.onPostDelete)
+    }
   },
 }
 </script>

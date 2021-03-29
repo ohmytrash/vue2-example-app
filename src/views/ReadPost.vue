@@ -7,9 +7,7 @@
       <div class="jumbotron jumbotron-fluid bg-dark">
         <div class="container text-light">
           <h1 class="mb-2">{{ post.title }}</h1>
-          <p class="lead font-weight-bold">
-            Category : <a href="#">{{ post.category.title }}</a>
-          </p>
+          <p class="lead font-weight-bold">Category : {{ post.category.title }}</p>
           <div class="d-flex align-items-center">
             <div class="mr-2" :style="{ width: '2.5rem', height: '2.5rem' }">
               <v-lazy-image

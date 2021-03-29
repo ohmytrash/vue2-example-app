@@ -1,2 +1,2 @@
-export const API_URL = 'http://localhost:3000/api'
-export const WS_URL = 'http://localhost:3000'
+export const API_URL = 'https://cirsquapi.herokuapp.com/api'
+export const WS_URL = 'https://cirsquapi.herokuapp.com'

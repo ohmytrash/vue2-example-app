@@ -4,10 +4,15 @@
       <div class="d-flex justify-content-between">
         <div class="d-flex align-items-center">
           <div class="mr-1" :style="{ width: '2.5rem', height: '2.5rem' }">
-            <v-lazy-image :src="user.avatar || Avatar" :src-placeholder="Avatar" :alt="user.name" class="img-fluid rounded-circle" />
+            <v-lazy-image
+              :src="post.user.avatar || Avatar"
+              :src-placeholder="Avatar"
+              :alt="post.user.name"
+              class="img-fluid rounded-circle"
+            />
           </div>
           <div>
-            <router-link :to="{ name: 'User', params: { username: user.username } }" class="d-block">{{ user.name }}</router-link>
+            <router-link :to="{ name: 'User', params: { username: post.user.username } }" class="d-block">{{ post.user.name }}</router-link>
             <span class="time small">{{ post.createdAt | moment('ddd, MMM D YYYY') }}</span>
           </div>
         </div>
@@ -18,7 +23,7 @@
     </div>
     <div class="card-body py-2">
       <h5 class="m-0">{{ post.title }}</h5>
-      <small>{{ category.title }}</small>
+      <small>{{ post.category.title }}</small>
       <p class="mb-2">{{ post.description }}</p>
       <router-link :to="{ name: 'ReadPost', params: { slug: post.slug } }" class="btn-link">Read more</router-link>
     </div>
@@ -35,29 +40,11 @@ export default {
       type: Object,
       default: () => ({}),
     },
-    static: {
-      type: Boolean,
-      default: false,
-    },
   },
   data() {
     return {
       Avatar,
     }
-  },
-  computed: {
-    user() {
-      if (this.static) {
-        return this.post.user
-      }
-      return this.$store.state.post.users[this.post.user]
-    },
-    category() {
-      if (this.static) {
-        return this.post.category
-      }
-      return this.$store.state.post.categories[this.post.category]
-    },
   },
 }
 </script>

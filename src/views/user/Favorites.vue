@@ -1,6 +1,6 @@
 <template>
   <div>
-    <post-list v-for="favorite in favorites" :key="favorite.id" :post="favorite.post" static />
+    <post-list v-for="favorite in favorites" :key="favorite.id" :post="favorite.post" />
     <div>
       <infinite-loading @infinite="infiniteHandler" />
     </div>

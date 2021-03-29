@@ -1,6 +1,6 @@
 <template>
   <div>
-    <post-list v-for="post in posts" :key="post.id" :post="post" static />
+    <post-list v-for="post in posts" :key="post.id" :post="post" />
     <div>
       <infinite-loading @infinite="infiniteHandler" />
     </div>

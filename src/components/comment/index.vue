@@ -62,9 +62,9 @@ export default {
   },
   beforeDestroy() {
     if (this.socket) {
-      this.socket = null
       this.socket.off('NEW_COMMENT', this.onNewComment)
       this.socket.off('DELETE_COMMENT', this.onDeleteComment)
+      this.socket = null
     }
   },
 }

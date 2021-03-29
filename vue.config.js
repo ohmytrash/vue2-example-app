@@ -7,6 +7,10 @@ module.exports = {
     },
   },
   chainWebpack(config) {
+    config.plugin('html').tap((args) => {
+      args[0].title = 'Cirsqu - vue example app'
+      return args
+    })
     const FILE_RE = /\.(vue|js|ts|svg)$/
     config.module.rule('svg').issuer((file) => !FILE_RE.test(file))
     config.module

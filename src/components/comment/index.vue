@@ -9,7 +9,7 @@
   </div>
 </template>
 <script>
-import io from 'socket.io-client'
+import socket from '@/common/socket'
 import ApiService from '@/common/api.service'
 import CommentForm from './CommentForm'
 import Spinner from '../infiniteLoading/Spinner'
@@ -55,7 +55,7 @@ export default {
   mounted() {
     this.loadComments()
     if (!this.socket) {
-      this.socket = io('http://localhost:3000/comments')
+      this.socket = socket
       this.socket.on('NEW_COMMENT', this.onNewComment)
       this.socket.on('DELETE_COMMENT', this.onDeleteComment)
     }

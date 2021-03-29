@@ -6,5 +6,6 @@ export const ADD_FAVORITE = '[FAVORITE] ADD_FAVORITE'
 export const REMOVE_FAVORITE = '[FAVORITE] REMOVE_FAVORITE'
 
 export const ADD_POST = '[POST] ADD_POST'
+export const NEW_POST = '[POST] NEW_POST'
 export const UPDATE_POST = '[POST] UPDATE_POST'
 export const REMOVE_POST = '[POST] REMOVE_POST'

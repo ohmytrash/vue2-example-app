@@ -9,6 +9,7 @@
 <script>
 import PostList from '@/components/PostList'
 import ApiService from '@/common/api.service'
+import socket from '@/common/socket'
 export default {
   components: {
     PostList,
@@ -17,6 +18,7 @@ export default {
     return {
       posts: [],
       total: 0,
+      socket: null,
     }
   },
   methods: {
@@ -34,6 +36,43 @@ export default {
           $state.error()
         })
     },
+    onNewPost(post) {
+      const posts = [post, ...this.posts]
+      this.posts = posts
+      this.total = this.total + 1
+    },
+    onPostUpdate(post) {
+      const posts = []
+      this.posts.forEach((item) => {
+        if (post.id === item.id) {
+          posts.push(post)
+        } else {
+          posts.push(item)
+        }
+      })
+      this.posts = posts
+    },
+    onPostDelete(id) {
+      const posts = [...this.posts]
+      this.posts = posts.filter((post) => post.id !== id)
+      this.total = this.total - 1
+    },
+  },
+  mounted() {
+    if (!this.socket) {
+      this.socket = socket
+      socket.on('NEW_POST', this.onNewPost)
+      socket.on('UPDATE_POST', this.onPostUpdate)
+      socket.on('DELETE_POST', this.onPostDelete)
+    }
+  },
+  beforeDestroy() {
+    if (this.socket) {
+      this.socket = null
+      socket.off('NEW_POST', this.onNewPost)
+      socket.off('UPDATE_POST', this.onPostUpdate)
+      socket.off('DELETE_POST', this.onPostDelete)
+    }
   },
 }
 </script>

@@ -1,4 +1,7 @@
-# vue
+# vue-realworld-example-app
+
+## Customize configuration
+### See [Demo](https://cirsqu.dedeard.my.id/).
 
 ## Project setup
 ```

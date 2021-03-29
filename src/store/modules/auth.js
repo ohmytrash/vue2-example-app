@@ -1,4 +1,5 @@
 import ApiService from '@/common/api.service'
+import socket from '@/common/socket'
 import jwtService from '@/common/jwt.service'
 import { REGISTER, LOGIN, LOGOUT, CHECK_AUTH, UPDATE_PROFILE, UPDATE_AVATAR, FAVORITE_TOGGLE } from '../action.types'
 import { SET_AUTH, UPDATE_USER, ADD_FAVORITE, REMOVE_FAVORITE } from '../mutation.types'
@@ -69,12 +70,14 @@ const mutations = {
     state.user = user
     state.favorites = favorites
     if (token) {
+      socket.emit('IM_ONLINE', token)
       jwtService.saveToken(token)
     } else {
       jwtService.destroyToken()
     }
   },
   [UPDATE_USER](state, user) {
+    socket.emit('IM_ONLINE', jwtService.getToken())
     state.user = user
   },
   [ADD_FAVORITE](state, data) {

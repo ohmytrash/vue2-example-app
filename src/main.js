@@ -5,7 +5,7 @@ import router from '@/router'
 import store from '@/store'
 import plugins from '@/plugins'
 import ApiService from './common/api.service'
-import { CHECK_AUTH } from './store/action.types'
+import { CHECK_AUTH, LISTEN_ONLINE_USER } from './store/action.types'
 import { SET_BOOT_LOADING } from './store/mutation.types'
 import AuthMiddleware from './router/middlewares/auth'
 import GuestMiddleware from './router/middlewares/guest'
@@ -15,6 +15,8 @@ Vue.config.productionTip = false
 ApiService.init()
 
 Vue.use(plugins)
+
+store.dispatch(LISTEN_ONLINE_USER)
 
 let authCheck = false
 router.beforeEach((to, from, next) => {

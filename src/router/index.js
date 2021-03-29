@@ -12,6 +12,9 @@ import SettingPage from '@/views/Setting'
 import NewPostPage from '@/views/NewPost'
 import ReadPostPage from '@/views/ReadPost'
 import EditPostPage from '@/views/EditPost'
+import UserPage from '@/views/user'
+import UserPostPage from '@/views/user/Posts'
+import UserFavoritePage from '@/views/user/Favorites'
 
 Vue.use(VueRouter)
 
@@ -59,6 +62,25 @@ const routes = [
         meta: {
           middleware: ['AuthMiddleware'],
         },
+      },
+      {
+        path: '@:username/',
+        component: UserPage,
+        meta: {
+          middleware: ['AuthMiddleware'],
+        },
+        children: [
+          {
+            path: '',
+            name: 'User',
+            component: UserPostPage,
+          },
+          {
+            path: 'favorites',
+            name: 'UserFavorite',
+            component: UserFavoritePage,
+          },
+        ],
       },
     ],
   },

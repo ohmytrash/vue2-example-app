@@ -7,7 +7,7 @@
             <v-lazy-image :src="user.avatar || Avatar" :src-placeholder="Avatar" :alt="user.name" class="img-fluid rounded-circle" />
           </div>
           <div>
-            <a href="#" class="d-block">{{ user.name }}</a>
+            <router-link :to="{ name: 'User', params: { username: user.username } }" class="d-block">{{ user.name }}</router-link>
             <span class="time small">{{ post.createdAt | moment('ddd, MMM D YYYY') }}</span>
           </div>
         </div>
@@ -35,6 +35,10 @@ export default {
       type: Object,
       default: () => ({}),
     },
+    static: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -43,9 +47,15 @@ export default {
   },
   computed: {
     user() {
+      if (this.static) {
+        return this.post.user
+      }
       return this.$store.state.post.users[this.post.user]
     },
     category() {
+      if (this.static) {
+        return this.post.category
+      }
       return this.$store.state.post.categories[this.post.category]
     },
   },

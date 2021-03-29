@@ -17,7 +17,9 @@
             <router-link class="nav-link" :to="{ name: 'Setting' }" active-class="" exact-active-class="active">Setting</router-link>
           </nav>
           <nav class="navbar-nav ml-auto">
-            <a class="nav-link" href="#">{{ $store.getters.user.username }}</a>
+            <router-link class="nav-link" :to="{ name: 'User', params: { username: $store.getters.user.username } }">{{
+              $store.getters.user.username
+            }}</router-link>
           </nav>
         </div>
       </div>

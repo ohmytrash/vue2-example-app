@@ -61,8 +61,11 @@ export default {
     }
   },
   beforeDestroy() {
-    this.socket.off('NEW_COMMENT')
-    this.socket.off('DELETE_COMMENT')
+    if (this.socket) {
+      this.socket = null
+      this.socket.off('NEW_COMMENT', this.onNewComment)
+      this.socket.off('DELETE_COMMENT', this.onDeleteComment)
+    }
   },
 }
 </script>

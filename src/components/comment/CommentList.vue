@@ -19,7 +19,9 @@
           </div>
         </div>
         <div class="right">
-          <button class="btn btn-danger btn-sm" v-if="comment.user.id === $store.getters.user.id">DELETE</button>
+          <button class="btn btn-danger btn-sm" @click="handleDelete" v-if="comment.user.id === $store.getters.user.id" :disabled="loading">
+            DELETE
+          </button>
         </div>
       </div>
     </div>
@@ -31,6 +33,7 @@
 
 <script>
 import Avatar from '@/assets/image/avatar.png'
+import ApiService from '@/common/api.service'
 export default {
   props: {
     comment: {
@@ -41,7 +44,20 @@ export default {
   data() {
     return {
       Avatar,
+      loading: false,
     }
+  },
+  methods: {
+    async handleDelete() {
+      this.loading = true
+      try {
+        await ApiService.deleteComment(this.comment.id)
+        this.$toast.success('Your comment has been deleted.')
+      } catch (e) {
+        this.$toast.error(e)
+      }
+      this.loading = false
+    },
   },
 }
 </script>

@@ -194,6 +194,17 @@ const ApiService = {
       }
     })
   },
+  deleteComment(id) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        ApiService.setHeader()
+        await Vue.axios.delete('/comments/' + id)
+        resolve()
+      } catch (e) {
+        reject(catchError(e))
+      }
+    })
+  },
 }
 
 export default ApiService

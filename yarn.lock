@@ -9102,6 +9102,13 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
+visibility@^0.0.0:
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/visibility/-/visibility-0.0.0.tgz#e8ee5f845726b78457bef59b34965d49461068de"
+  integrity sha1-6O5fhFcmt4RXvvWbNJZdSUYQaN4=
+  dependencies:
+    inherits "~2.0.1"
+
 vm-browserify@^1.0.1:
   version "1.1.2"
   resolved "https://registry.npm.taobao.org/vm-browserify/download/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"

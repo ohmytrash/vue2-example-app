@@ -21,7 +21,9 @@
                   style="line-height: 1"
                   >{{ user.username }}</router-link
                 >
-                <span class="d-block text-success small" style="line-height: 1">ONLINE</span>
+                <span class="d-block small" :class="user.away.includes(false) ? 'text-success' : 'text-warning'" style="line-height: 1">{{
+                  user.away.includes(false) ? 'ONLINE' : 'AWAY'
+                }}</span>
               </div>
             </div>
           </div>

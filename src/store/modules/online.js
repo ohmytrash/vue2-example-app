@@ -1,3 +1,4 @@
+import visibility from 'visibility'
 import socket from '@/common/socket'
 import jwtService from '@/common/jwt.service'
 import { LISTEN_ONLINE_USER } from '../action.types'
@@ -18,16 +19,20 @@ const actions = {
     socket.on('ONLINE_USER', (users) => {
       commit(SET_ONLINE_USER, users)
     })
-    socket.on('connect', () => {
-      if (rootState.auth.user) {
-        socket.emit('IM_ONLINE', jwtService.getToken())
+
+    const watcher = visibility()
+    const handleVisible = () => {
+      if (rootState.auth.user && window.navigator.onLine) {
+        if (watcher.visible()) {
+          socket.emit('IM_ONLINE', jwtService.getToken())
+        } else {
+          socket.emit('IM_AWAY', jwtService.getToken())
+        }
       }
-    })
-    setInterval(() => {
-      if (rootState.auth.user) {
-        socket.emit('IM_ONLINE', jwtService.getToken())
-      }
-    }, 10000)
+    }
+    socket.on('connect', handleVisible)
+    watcher.on('change', handleVisible)
+    setInterval(handleVisible, 10000)
   },
 }
 

@@ -20,6 +20,7 @@
     "svg-to-vue-component": "^0.3.8",
     "v-lazy-image": "^1.4.0",
     "v-markdown-editor": "^1.2.6",
+    "visibility": "^0.0.0",
     "vue": "^2.6.11",
     "vue-axios": "^3.2.4",
     "vue-gtag": "^1.11.0",

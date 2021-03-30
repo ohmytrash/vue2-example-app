@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VueGtag from 'vue-gtag'
+
+import { GTAG } from '@/common/config'
 
 import MainLayout from '@/layouts/MainLayout'
 import AuthLayout from '@/layouts/AuthLayout'
@@ -124,5 +127,13 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes,
 })
+
+Vue.use(
+  VueGtag,
+  {
+    config: { id: GTAG },
+  },
+  router
+)
 
 export default router

@@ -22,6 +22,7 @@
     "v-markdown-editor": "^1.2.6",
     "vue": "^2.6.11",
     "vue-axios": "^3.2.4",
+    "vue-gtag": "^1.11.0",
     "vue-infinite-loading": "^2.4.5",
     "vue-meta": "^2.4.0",
     "vue-moment": "^4.1.0",

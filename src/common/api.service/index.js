@@ -22,10 +22,12 @@ const ApiService = {
     }
     return e.message
   },
+}
+
+export default {
+  ...ApiService,
   ...AuthService(ApiService),
   ...UserService(ApiService),
   ...PostService(ApiService),
   ...CommentService(ApiService),
 }
-
-export default ApiService

@@ -1,3 +1,3 @@
-export const API_URL = 'https://cirsquapi.herokuapp.com/api'
-export const WS_URL = 'https://cirsquapi.herokuapp.com'
-export const GTAG = 'G-EP83NV0WJ0'
+export const API_URL = process.env.VUE_APP_API_URL || 'http://localhost:3000/api'
+export const WS_URL = process.env.VUE_APP_WS_URL || 'http://localhost:3000'
+export const GTAG = process.env.VUE_APP_GTAG || 'G-XXXXX'

@@ -15,6 +15,10 @@
             <router-link class="nav-link" :to="{ name: 'Home' }" active-class="" exact-active-class="active">Home</router-link>
             <router-link class="nav-link" :to="{ name: 'NewPost' }" active-class="" exact-active-class="active">New Post</router-link>
             <router-link class="nav-link" :to="{ name: 'Setting' }" active-class="" exact-active-class="active">Setting</router-link>
+            <a href="https://github.com/dedeardiansya/vue-realworld-example-app" target="_blank" class="nav-link">Source code</a>
+            <a href="https://github.com/dedeardiansya/node-express-realworld-example-app" target="_blank" class="nav-link"
+              >Server source code</a
+            >
           </nav>
           <nav class="navbar-nav ml-auto">
             <router-link class="nav-link" :to="{ name: 'User', params: { username: $store.getters.user.username } }">{{

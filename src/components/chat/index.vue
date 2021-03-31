@@ -61,7 +61,6 @@ export default {
     socket.emit('FETCH_CHAT', (messages) => {
       this.messages = messages
       socket.on('CHAT', (message) => {
-        console.log(message)
         this.messages = [...this.messages, message]
       })
       socket.on('TYPING', (message) => {

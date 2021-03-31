@@ -9172,6 +9172,11 @@ vue-axios@^3.2.4:
   resolved "https://registry.yarnpkg.com/vue-axios/-/vue-axios-3.2.4.tgz#2334158db8ac2a0f603aa431c2626fbf6d766724"
   integrity sha512-8Dgws6dwt+1LoKEU4HDzIPfaRgWHl0xLDLW6kxrAk/z3GAJ2thkajcXC4qZgmqj0cZRx/Z/dzooKi5HWtUQwxA==
 
+vue-chat-scroll@^2.0.0-alpha.4:
+  version "2.0.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/vue-chat-scroll/-/vue-chat-scroll-2.0.0-alpha.4.tgz#bb6cbaf3a06bae248a7afc3840d83c3985624b80"
+  integrity sha512-ChtlhST7Si4swS+J9HlOPVR0+RAUW/54JR3utu+SOy8yPknQIX2iUyNtlC8XI6AYH3RKLtF9sQz3frU6Hbmakg==
+
 vue-confirm-dialog@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/vue-confirm-dialog/-/vue-confirm-dialog-1.0.2.tgz#a9c02b21e3aa6211ac50d6cedb2078e6eb721aaa"

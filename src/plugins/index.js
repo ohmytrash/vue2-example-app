@@ -8,6 +8,7 @@ import InfiniteLoading from 'vue-infinite-loading'
 import Sticky from 'vue-sticky-directive'
 import { FadeTransition } from 'vue2-transitions'
 import VueConfirmDialog from 'vue-confirm-dialog'
+import VueChatScroll from 'vue-chat-scroll'
 
 import NoMore from '@/components/infiniteLoading/NoMore'
 import Spinner from '@/components/infiniteLoading/Spinner'
@@ -36,6 +37,7 @@ const Plugins = {
     Vue.component('FadeTransition', FadeTransition)
     Vue.use(VueConfirmDialog)
     Vue.component('vue-confirm-dialog', VueConfirmDialog.default)
+    Vue.use(VueChatScroll)
   },
 }
 

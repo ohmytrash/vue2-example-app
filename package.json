@@ -26,6 +26,7 @@
     "visibility": "^0.0.0",
     "vue": "^2.6.11",
     "vue-axios": "^3.2.4",
+    "vue-chat-scroll": "^2.0.0-alpha.4",
     "vue-confirm-dialog": "^1.0.2",
     "vue-gtag": "^1.11.0",
     "vue-infinite-loading": "^2.4.5",

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="row">
+    <div class="row justify-content-center">
       <div class="col-md-4 pt-3">
         <h3>ONLINE</h3>
         <user-online-card v-for="user in users" :key="user.id" :user="user" />

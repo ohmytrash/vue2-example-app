@@ -3,8 +3,8 @@
     <div>
       <button class="btn btn-danger" @click="stopCall()">HANG UP</button>
     </div>
-    <video ref="videoLocal" class="video-local"></video>
-    <video ref="videoRemote" class="video-remote"></video>
+    <video ref="local" class="video-local" muted></video>
+    <video ref="remote" class="video-remote"></video>
   </div>
 </template>
 
@@ -32,16 +32,22 @@ export default {
           track.stop()
         })
       }
-      navigator.mediaDevices
+      window.navigator.mediaDevices
         .getUserMedia({
-          video: { width: { ideal: 640, max: 1280 }, height: { ideal: 360, max: 720 }, frameRate: { ideal: 10, max: 15 } },
           audio: true,
+          video: { frameRate: 10 },
         })
         .then((stream) => {
           this.stream = stream
-          const video = this.$refs.videoLocal
-          video.srcObject = stream
-          video.play()
+          const video = this.$refs.local
+          if ('srcObject' in video) {
+            video.srcObject = stream
+          } else {
+            video.src = window.URL.createObjectURL(stream)
+          }
+          video.onloadedmetadata = function () {
+            video.play()
+          }
           cb()
         })
         .catch((e) => {
@@ -49,13 +55,38 @@ export default {
         })
     },
     onRemoteStream(stream) {
-      const video = this.$refs.videoRemote
-      video.srcObject = stream
-      video.play()
+      const video = this.$refs.remote
+      if ('srcObject' in video) {
+        video.srcObject = stream
+      } else {
+        video.src = window.URL.createObjectURL(stream)
+      }
+      video.onloadedmetadata = function () {
+        video.play()
+      }
     },
     signaling() {
       this.getStream(() => {
-        this.peer = new Peer({ initiator: this.initiator, stream: this.stream })
+        this.peer = new Peer({
+          initiator: this.initiator,
+          stream: this.stream,
+          config: {
+            ...(() => {
+              if (process.env.NODE_ENV === 'production') {
+                return {
+                  iceServers: [
+                    {
+                      urls: process.env.VUE_APP_STUN_URL,
+                      username: process.env.VUE_APP_STUN_USERNAME,
+                      credential: process.env.VUE_APP_STUN_CREDENTIAL,
+                    },
+                  ],
+                }
+              }
+              return {}
+            })(),
+          },
+        })
         this.peer.on('signal', (data) => {
           socket.emit('SIGNAL', this.signalId, data)
         })
@@ -63,7 +94,6 @@ export default {
           this.peer.signal(data)
         })
         this.peer.on('stream', this.onRemoteStream)
-
         this.peer.on('close', () => {
           this.stopCall()
         })
@@ -138,18 +168,16 @@ export default {
       this.initiator = true
       this.calling = true
       this.openModal = true
-      this.getStream(() => {
-        socket.emit('CALL', targetid, (err, user, signalId) => {
-          if (this.calling) {
-            if (err) {
-              this.$toast.error(err)
-              return this.stopCall()
-            }
-            this.signalId = signalId
-            this.user = user
-            this.signaling()
+      socket.emit('CALL', targetid, (err, user, signalId) => {
+        if (this.calling) {
+          if (err) {
+            this.$toast.error(err)
+            return this.stopCall()
           }
-        })
+          this.signalId = signalId
+          this.user = user
+          this.signaling()
+        }
       })
     })
     socket.on('PING_SIGNAL', (cb) => {

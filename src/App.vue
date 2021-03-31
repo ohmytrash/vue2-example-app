@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <vue-confirm-dialog></vue-confirm-dialog>
     <fade-transition>
       <loading-overlay v-if="$store.state.bootLoading" />
     </fade-transition>

@@ -13,6 +13,7 @@
         <div class="navbar-collapse" :class="{ collapse }">
           <nav class="navbar-nav mr-auto">
             <router-link class="nav-link" :to="{ name: 'Home' }" active-class="" exact-active-class="active">Home</router-link>
+            <router-link class="nav-link" :to="{ name: 'Chat' }" active-class="" exact-active-class="active">Chat</router-link>
             <router-link class="nav-link" :to="{ name: 'NewPost' }" active-class="" exact-active-class="active">New Post</router-link>
             <router-link class="nav-link" :to="{ name: 'Setting' }" active-class="" exact-active-class="active">Setting</router-link>
             <a href="https://github.com/dedeardiansya/vue-realworld-example-app" target="_blank" class="nav-link">Source code</a>
@@ -28,6 +29,7 @@
         </div>
       </div>
     </header>
+    <call />
     <fade-transition>
       <router-view />
     </fade-transition>
@@ -35,7 +37,11 @@
 </template>
 
 <script>
+import Call from '@/components/Call'
 export default {
+  components: {
+    Call,
+  },
   data() {
     return {
       collapse: true,

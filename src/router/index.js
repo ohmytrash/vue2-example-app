@@ -18,6 +18,7 @@ import EditPostPage from '@/views/EditPost'
 import UserPage from '@/views/user'
 import UserPostPage from '@/views/user/Posts'
 import UserFavoritePage from '@/views/user/Favorites'
+import ChatPage from '@/views/Chat'
 
 Vue.use(VueRouter)
 
@@ -62,6 +63,14 @@ const routes = [
         path: 'edit/:slug',
         name: 'EditPost',
         component: EditPostPage,
+        meta: {
+          middleware: ['AuthMiddleware'],
+        },
+      },
+      {
+        path: 'chat',
+        name: 'Chat',
+        component: ChatPage,
         meta: {
           middleware: ['AuthMiddleware'],
         },

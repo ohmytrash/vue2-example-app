@@ -18,8 +18,8 @@
 <script>
 import ChatList from './ChatList'
 import socket from '@/common/socket'
-window.socket = socket
 import jwtService from '@/common/jwt.service'
+
 export default {
   components: {
     ChatList,

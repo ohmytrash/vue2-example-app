@@ -11,7 +11,9 @@
 <script>
 import socket from '@/common/socket'
 import PubSub from 'pubsub-js'
-import Peer from 'simple-peer'
+import 'webrtc-adapter'
+import Peer from 'simple-peer-light'
+
 export default {
   data() {
     return {
@@ -70,6 +72,7 @@ export default {
         this.peer = new Peer({
           initiator: this.initiator,
           stream: this.stream,
+          channelName: this.signalId,
           config: {
             ...(() => {
               if (process.env.NODE_ENV === 'production') {

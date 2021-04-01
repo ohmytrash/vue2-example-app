@@ -21,7 +21,7 @@ store.dispatch(LISTEN_ONLINE_USER)
 let authCheck = false
 router.beforeEach((to, from, next) => {
   if (!authCheck) {
-    Promise.all([store.dispatch(CHECK_AUTH)]).then(() => {
+    store.dispatch(CHECK_AUTH).then(() => {
       authCheck = true
       store.commit(SET_BOOT_LOADING, false)
       next()

@@ -6,12 +6,11 @@ import AuthService from './auth'
 import PostService from './post'
 import UserService from './user'
 import CommentService from './comment'
-import { API_URL } from '@/common/config'
 
 const ApiService = {
   init() {
     Vue.use(VueAxios, axios)
-    Vue.axios.defaults.baseURL = API_URL
+    Vue.axios.defaults.baseURL = process.env.VUE_APP_API_URL || 'http://localhost:3000/api'
   },
   setHeader() {
     Vue.axios.defaults.headers.common['Authorization'] = `Bearer ${JwtService.getToken()}`
